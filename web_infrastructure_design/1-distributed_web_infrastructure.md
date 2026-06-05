@@ -129,30 +129,30 @@ SELECT * FROM users;
 
 This reduces load on the Primary database.
 
-2. Issues with this infrastructure
+# 2. Issues with this infrastructure
 
 ## SPOF (Single Point of Failure)
 
 Several still exits:
 
-**Load Balancer**
+### Load Balancer
 
 Only one HAProxy.
 
-If it fails:
+**If it fails**:
 - Users -> X -> Website unreachable
 - No traffic reaches the servers.
 
-**DNS**
+### DNS
 
 Only one DNS configuration.
 
-If DNS resolution fails:
+**If DNS resolution fails**:
 - Users cannot find the website.
 
-**Primary Database**
+### Primary Database
 
-If the Primary database fails:
+**If the Primary database fails**:
 - No writes possible.
 
 The application may become partially unavailable.
