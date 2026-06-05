@@ -1,25 +1,25 @@
-1. Explanation
+# 1. Explanation
 
-• What is a server ?
+## What is a server ?
 
 A server is a physical or virtual machine that provides services or resources to other computers (clients) over a network.
 
-• What is the role of the domain name ?
+## What is the role of the domain name ?
 
 The domain name (foobar.com) provides a human-readable address for the website of requiring users to remember an IP address.
 
-• What type of DNS record is www ?
+## What type of DNS record is www ?
 
 www.foobar.com is typically an A record that points to the IPv4 address 8.8.8.8.
 
-• What is the role of the web server (Nginx) ?
+## What is the role of the web server (Nginx) ?
 
 Nginx:
 - Receives HTTP/HTTPS requests from users.
 - Serves static files (HTML, CSS, JS, images).
 - Forwards dynamic requests to the application server.
 
-• What is the role of the application server ?
+## What is the role of the application server ?
 
 The application server:
 - Executes the application code.
@@ -27,22 +27,22 @@ The application server:
 - Interacts with the database.
 - Generates dynamic content for users.
 
-• What is the role of the database (MySQL) ?
+## What is the role of the database (MySQL) ?
 
 The database:
 - Stores application data permanently.
 - Handles queries from the application server.
 - Returns requested information.
 
-• What is used to communicate with the user's computer ?
+## What is used to communicate with the user's computer ?
 
 The server communicates with the user's computer through:
 - TCP/IP over the Internet.
 - HTTP or HTTPS protocols.
 
-2. Issues with this infrastructure
+# 2. Issues with this infrastructure
 
-• SPOF (Single Point of Failure)
+## SPOF (Single Point of Failure)
 
 There is only one server.
 
@@ -52,13 +52,13 @@ Application server fails.
 Database fails.
 Website becomes unavailable.
 
-• Downtime During Maintenance
+## Downtime During Maintenance
 
 When deploying new code or restarting services:
 - The application may become temporarily unavailable.
 - Users may experience downtime.
 
-• Cannot Scale
+## Cannot Scale
 
 A single server has limited:
 - CPU
