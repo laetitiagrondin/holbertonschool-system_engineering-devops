@@ -29,32 +29,36 @@
 Installed on the Load Balancer.
 
 **Purpose**:
-Enable HTTPS.
-Encrypt communications.
-Protect sensitive information.
+- Enable HTTPS.
+- Encrypt communications.
+- Protect sensitive information.
 
 **Without SSL**:
+```
 User <---- Plain Text ----> Server
 Anyone intercepting traffic can read it.
+```
 
 **With SSL**:
+```
 User <---- Encrypted ----> Server
 Data remains confidential.
+```
 
 ### Monitoring clients
 
 A monitoring agent runs on each server.
 
 **Examples**:
-Sumo Logic Collector
-Datadog Agent
-Prometheus Node Exporter
+- Sumo Logic Collector
+- Datadog Agent
+- Prometheus Node Exporter
 
 **Purpose**:
-Collect metrics.
-Collect logs.
-Detect failures.
-Alert administrators.
+- Collect metrics.
+- Collect logs.
+- Detect failures.
+- Alert administrators.
 
 ## What are firewalls for ?
 
@@ -100,12 +104,12 @@ They act as a barrier between trusted and untrusted networks.
 
 Monitoring agents installed on each server:
 ```
-Server
----|
-Monitoring Agent
----|
----v
-Monitoring Platform
+          Server
+            |
+        Monitoring Agent
+            |
+            v
+    Monitoring Platform
 ```
 
 **The agent**:
@@ -132,32 +136,34 @@ Requests handled per second
 - Create dashboards and alerts.
 
 **Example**:
+```
 1000 requests in 10 seconds
 QPS = 100 requests/second
+```
 
 **This helps identify**:
 - Traffic spikes
 - Performance bottlenecks
 - Capacity requirements
 
-## Issues with this infrastructure
+## 2. Issues with this infrastructure
 
 ### SSL Termination at the Load Balancer
 
 **What happens**:
 ```
-User
--|
-HTTPS
--|
-Load Balancer
--|
-HTTP
--|
-Backend Servers
+             User
+              |
+            HTTPS
+              |
+          Load Balancer
+              |
+             HTTP
+              |
+        Backend Servers
 ```
 
-The connection is encrypted only until the load balancer.
+*The connection is encrypted only until the load balancer.*
 
 **Between the load balancer and servers**:
 - Traffic is unencrypted.
@@ -165,69 +171,74 @@ The connection is encrypted only until the load balancer.
 
 **A more secure solution is end-to-end encryption**:
 ```
-User --> HTTPS --> LB --> HTTPS --> Servers
+User --> HTTPS --> Load Balancer --> HTTPS --> Servers
 ```
 
 ## Only One MySQL Server Accepting Writes
 
-**Current setup**:
+### Current setup:
+
 ```
 Primary --> Replica
 ```
 
-**Problems**:
+### Problems:
 
-*Single Point Of Failure*
+**Single Point Of Failure**
 
-If the Primary fails:
+*If the Primary fails*:
 - No writes are possible.
 - Application functionality may break.
 
-*Write Bottleneck*
+**Write Bottleneck**
 
-All write operations go to one database.
-As traffic increases:
+*All write operations go to one database.*
+
+*As traffic increases*:
 - The Primary may become overloaded.
 
 ## Every Server Contains All Components
 
-**Each server runs**:
+### Each server runs:
 - Nginx
 - Application Server
 - Database
 
-**Problems**:
+### Problems:
 
-*Resource Contention*
+**Resource Contention**
 
-Services compete for:
+*Services compete for*:
 - CPU
 - Memory
 - Disk I/O
 
-Example:
-Database spike
-------|
-------v
-Application slows
-------|
-------v
-Website slows
+*Example*:
+```
+            Database spike
+                   |
+                   v
+            Application slows
+                   |
+                   v
+            Website slows
+```
 
-*Difficult Scaling*
+**Difficult Scaling**
 
-Suppose only the database is overloaded.
-You cannot scale just the database.
-You must duplicate:
+*Suppose only the database is overloaded.*
+*You cannot scale just the database.*
+
+*You must duplicate*:
 - Nginx
 - App Server
 - Database
 even if only one component needs more resources.
 
-*Maintenance Complexity*
+**Maintenance Complexity**
 
-Each server must maintain:
-Web server
-Application server
-Database
-This increases operational complexity.
+*Each server must maintain*:
+- Web server
+- Application servers
+- Database
+- This increases operational complexity.
