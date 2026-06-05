@@ -41,37 +41,43 @@ Traffic is distribued evenly among available servers.
 
 ## Active-Active vs Active-Passive
 
-*Active-Active*
+### Active-Active
 
 Used in this design.
 
-Load Balancer
---/-----\
-Server1 Server2
-Active Active
+```
+                  HAProxy (Load Balancer)
+                            |
+            --------------------------------
+            |                               |
+    Server 1 (Active)                 Server 2 (Active)
+```
 
 Both servers handle requests simultaneously.
 
-Advantages:
+**Advantages**:
 - Better performance.
 - Better resource utilization.
 - Increased capacity.
 
-*Active-Passive*
+### Active-Passive
 
-Load Balancer
---/-----\
-Server1 Server2
-Active Standby
+```
+                  HAProxy (Load Balancer)
+                            |
+            --------------------------------
+            |                               |
+    Server 1 (Active)                 Server 2 (Standby)
+```
 
 Only one server receives traffic.
 The standby server becomes active if the main server fails.
 
-Advantages:
+**Advantages**:
 - Simpler failover.
 - Easier synchronization.
 
-Disadvantage:
+**Disadvantage**:
 - One server remains unused most of the time.
 
 ## How a Primary replica cluster works
