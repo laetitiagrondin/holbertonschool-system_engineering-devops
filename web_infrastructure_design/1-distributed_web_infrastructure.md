@@ -82,17 +82,19 @@ The standby server becomes active if the main server fails.
 
 ## How a Primary replica cluster works
 
+```
 Primary Database
--------|
--------| Replication
--------v
+       |
+       | Replication
+       v
 Replica Database
+```
 
-Primary (Master):
+**Primary (Master)**:
 - Accepts writes (INSERT, UPDATE, DELETE).
 - Contains the authoritative copy of the data.
 
-Replica (Slave):
+**Replica (Slave)**:
 - Receives updates from the Primary.
 - Usually serves read-only queries.
 - Cannot normally accept writes.
