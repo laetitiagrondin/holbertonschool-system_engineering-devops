@@ -27,7 +27,7 @@ Added because:
 
 ## Load Balancer Distribution Algorithm
 
-A common configuration is: Round Robin.
+A common configuration is: *Round Robin*.
 
 How it works:
 Request 1 -> Server 1
@@ -39,7 +39,7 @@ Traffic is distribued evenly among available servers.
 
 ## Active-Active vs Active-Passive
 
-{Active-Active}
+*Active-Active*
 
 Used in this design.
 
@@ -55,7 +55,7 @@ Advantages:
 - Better resource utilization.
 - Increased capacity.
 
-Active-Passive
+*Active-Passive*
 
 Load Balancer
 --/-----\
@@ -91,7 +91,7 @@ Replica (Slave):
 
 ## Difference between Primary node and replica node for the application
 
-• Primary
+**Primary**
 
 Used for:
 INSERT
@@ -101,7 +101,7 @@ DELETE
 Example:
 INSERT INTO users…
 
-• Replica
+**Replica**
 
 Used for:
 SELECT
@@ -117,7 +117,7 @@ This reduces load on the Primary database.
 
 Several still exits:
 
-• Load Balancer
+**Load Balancer**
 
 Only one HAProxy.
 
@@ -125,14 +125,14 @@ If it fails:
 - Users -> X -> Website unreachable
 - No traffic reaches the servers.
 
-• DNS
+**DNS**
 
 Only one DNS configuration.
 
 If DNS resolution fails:
 - Users cannot find the website.
 
-• Primary Database
+**Primary Database**
 
 If the Primary database fails:
 - No writes possible.
@@ -141,14 +141,14 @@ The application may become partially unavailable.
 
 ## Security Issues
 
-• No Firewall
+**No Firewall**
 
 Problems:
 - All services may be exposed directly to the Internet.
 - Increased attack surface.
 - Unauthorized access risks.
 
-• No HTTPS
+**No HTTPS**
 
 Problems:
 - Traffic is unencrypted.
