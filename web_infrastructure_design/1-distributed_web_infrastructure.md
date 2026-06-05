@@ -165,23 +165,23 @@ Several still exits:
 
 ## Security Issues
 
-**No Firewall**
+### No Firewall
 
-Problems:
+**Problems**:
 - All services may be exposed directly to the Internet.
 - Increased attack surface.
 - Unauthorized access risks.
 
-**No HTTPS**
+### No HTTPS
 
-Problems:
+**Problems**:
 - Traffic is unencrypted.
 - Passwords and sensitive data can be intercepted.
 - Vulnerable to Man-in-the-Middle attacks.
 
 ## No Monitoring
 
-Problems:
+**Problems**:
 - No visibility into server health.
 - No alerts when services fail.
 - Difficult troubleshooting.
