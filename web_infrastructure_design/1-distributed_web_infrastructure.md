@@ -101,23 +101,31 @@ Replica Database
 
 ## Difference between Primary node and replica node for the application
 
-**Primary**
+### Primary
 
-Used for:
+**Used for**:
+```
 INSERT
 UPDATE
 DELETE
+```
 
-Example:
+**Example**:
+```
 INSERT INTO users…
+```
 
-**Replica**
+### Replica
 
-Used for:
+**Used for**:
+```
 SELECT
+```
 
-Example:
+**Example**:
+```
 SELECT * FROM users;
+```
 
 This reduces load on the Primary database.
 
