@@ -137,25 +137,31 @@ Several still exits:
 
 ### Load Balancer
 
-Only one HAProxy.
+*Only one HAProxy.*
 
 **If it fails**:
+```
 - Users -> X -> Website unreachable
 - No traffic reaches the servers.
+```
 
 ### DNS
 
-Only one DNS configuration.
+*Only one DNS configuration.*
 
 **If DNS resolution fails**:
+```
 - Users cannot find the website.
+```
 
 ### Primary Database
 
 **If the Primary database fails**:
+```
 - No writes possible.
+```
 
-The application may become partially unavailable.
+*The application may become partially unavailable.*
 
 ## Security Issues
 
