@@ -30,10 +30,12 @@ Added because:
 A common configuration is: *Round Robin*.
 
 How it works:
+```
 Request 1 -> Server 1
 Request 2 -> Server 2
 Request 3 -> Server 1
 Request 4 -> Server 2
+```
 
 Traffic is distribued evenly among available servers.
 
